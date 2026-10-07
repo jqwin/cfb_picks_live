@@ -175,7 +175,7 @@
   .g-nums { display: flex; gap: 14px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
   .g-nums b { color: var(--ink); font-weight: 600; }
   .g-nums .sep { color: var(--line); }
-  .g-nums .won { color: var(--bad); font-weight: 600; }
+  .g-won { font-size: 13px; font-weight: 600; color: var(--bad); margin-top: -2px; }
 
   /* Performance by confidence: a toggle and its own card, both outside the
      margin tile and placed in the first column, left-aligned beneath the tiles. On desktop the column
@@ -363,9 +363,9 @@
       const c = color(g.winner);
       const modelLine = `Model <b class="num">${Math.round(g.predicted_away_score)}–${Math.round(g.predicted_home_score)}</b>`;
       const finalLine = g.graded ? `Final <b class="num">${Math.round(g.actual_away_score)}–${Math.round(g.actual_home_score)}</b>` : `Final <b>—</b>`;
-      const offBy = g.graded ? `Off by <b class="num">${fix(g.margin_error, 1)}</b>` : "";
+      const offBy = g.graded ? `Spread miss <b class="num">${fix(g.margin_error, 1)}</b>` : "";
       const line = lineText(g);
-      const who = g.graded && !g.correct ? `<span class="won">${esc(g.actual_winner || (g.actual_margin > 0 ? g.home_team : g.away_team))} won</span>` : "";
+      const who = g.graded && !g.correct ? `<div class="g-won">${esc(g.actual_winner || (g.actual_margin > 0 ? g.home_team : g.away_team))} won</div>` : "";
       return `
         <li class="game ${cls}">
           <div class="g-top">
@@ -377,7 +377,8 @@
             <div class="meter" aria-hidden="true"><div style="width:${Math.max(0, Math.min(100, g.winner_prob * 100))}%"></div></div>
             <span class="pct num">${pct1(g.winner_prob)}</span>
           </div>
-          <div class="g-nums">${modelLine}${line}${finalLine}${offBy}${who}</div>
+          ${who}
+          <div class="g-nums">${modelLine}${finalLine}${line}${offBy}</div>
           ${styleBlock(g)}
         </li>`;
     }).join("");
