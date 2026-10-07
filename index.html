@@ -120,13 +120,13 @@
   .chip[aria-pressed="true"] { background: var(--chip-on); color: var(--chip-on-ink); border-color: var(--chip-on); }
   .chip:focus-visible, select:focus-visible, .tile-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .search {
-    flex: 1 1 180px; min-width: 0; font: inherit; font-size: 13px; color: var(--ink); background: var(--panel);
+    flex: 1 1 180px; min-width: 0; font: inherit; font-size: 16px; color: var(--ink); background: var(--panel);
     border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px;
   }
   .search::placeholder { color: var(--muted); }
   .search:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   select {
-    margin-left: auto; font: inherit; font-size: 13px; color: var(--ink); background: var(--panel);
+    margin-left: auto; font: inherit; font-size: 16px; color: var(--ink); background: var(--panel);
     border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px;
   }
 
@@ -178,17 +178,17 @@
   .g-nums .won { color: var(--bad); font-weight: 600; }
 
   /* Performance by confidence: a toggle and its own card, both outside the
-     margin tile and placed in that tile's column directly beneath it. On desktop the column
+     margin tile and placed in the first column, left-aligned beneath the tiles. On desktop the column
      is ~190px, so the table is compact and the Predicted column (the band
      label already approximates it) only shows on phones, where the card
      spans the full row. */
   .tile-toggle {
-    grid-column: 3; justify-self: start; margin-top: -4px;
+    grid-column: 1; justify-self: start; margin-top: -4px;
     appearance: none; display: inline-flex; align-items: center; gap: 4px; padding: 0 2px;
     background: none; border: 0; font: inherit; font-size: 12px; font-weight: 600; color: var(--accent); cursor: pointer;
   }
   .tile-toggle .ind { font-size: 15px; line-height: 1; }
-  .calib-panel { grid-column: 3; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px 6px; }
+  .calib-panel { grid-column: 1; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px 6px; }
   .calib-panel[hidden] { display: none; }
   .calib-panel p { margin: 0 0 6px; color: var(--muted); font-size: 12px; }
   .calib-panel table { font-size: 12px; }
